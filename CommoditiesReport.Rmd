@@ -1,0 +1,98 @@
+---
+title: "Commodities Report"
+author: "Michael Hall"
+date: "4/9/2020"
+output: html_document
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+
+## Including Plots
+
+You can also embed plots, for example:
+```{r nick, echo=TRUE}
+#Load the Library and Data Set
+library(shiny)
+library(ggplot2)
+load(url("https://raw.githubusercontent.com/Soulstealer07/test/master/Gasoline.RData"))
+#Define User Interface for Application
+ui <- fluidPage(
+  
+  
+    #Application Title
+    titlePanel("Gasoline Price Trend Analysis"),
+    
+    #Sidebar Layout
+    sidebarLayout(
+      
+        #Inputs: Select which inputs from the data we want to display
+        sidebarPanel(
+          
+            #Select variables for Y axis
+            selectInput(inputId = "y",
+                        label = "Y-axis:",
+                        choices=c("Value","X1.Month.Net.Change","X3.Month.Net.Change","X6.Month.Net.Change","X12.Month.Net.Change","X1.Month...Change","X3.Month...Change","X6.Month...Change","X12.Month...Change"),
+                        selected="Value"),
+            #Select x-axis variables
+            selectInput(inputId = "x",
+                        label="X-axis:",
+                        choices=c("Year","Period"),
+                        selected="Year")
+            ),
+        
+        #Output:Type of Plot
+        mainPanel(
+            plotOutput(outputId = "FreqTab")
+        )
+    )
+)
+
+
+    
+
+
+
+# Define server logic required to draw a histogram
+server <- function(input, output) {
+    
+    output$FreqTab <- renderPlot({
+        # draw the histogram with the specified number of bins
+        ggplot(t, aes_string(x=input$x, y=input$y)) + geom_point() #Notice the difference between the ggplots
+    })
+}
+
+# Run the application 
+shinyApp(ui = ui, server = server)
+
+```
+
+And here is an interactive visualization
+
+```{r setOptions, message=FALSE}
+
+library(googleVis)
+op <-options(gvis.plot.tag='chart')
+
+
+```
+
+```{r pad, results='asis', tidy=FALSE}
+
+M5 <- gvisMotionChart(GasolinePrice, idvar = "Period", timevar = "Year")
+plot(M5)
+```
+
+
+
+
+
