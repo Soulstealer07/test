@@ -7,8 +7,8 @@ TexasCounty_pop <- as.data.frame(TexasCounty_pop)
 TexasCounty_pop <- TexasCounty_pop[-c(3,4,5,6,9)]
 head(TexasCounty_pop)
 str(TexasCounty_pop)
-
-
+#This table has relevant population and size data
+ 
 library(maps)
 counties<-map_data("county")
 Texas <- map('county','texas',fill=TRUE, col=palette())
@@ -22,7 +22,7 @@ library(jsonlite)
 library(RCurl)
 library(googleVis)
 
-
+#This API has relevant location data latitude and longitude for each county in Texas
 base_url <- "https://data.texas.gov/resource/ups3-9e8m.json"
 County_Gov<-fromJSON(base_url)
 str(County_Gov)
@@ -31,29 +31,12 @@ str(County_Gov)
 County_combine <- cbind(TexasCounty_pop,County_Gov)
 str(County_combine)
 
+#Combine Wikipedia Table and Json Data
+
+
 County_csv <- write.csv(County_combine,"C:/Users/micha/OneDrive/Documents/Test/TexasCounties/County_csv.csv")
-TEX<-as.data.frame(TEX)
-head(TEX)
-str(TEX)
 
 
 
-
-M9<-gvisGeoChart(TEX,"report",colorvar="Population_10_",options=list(region="US"))
-plot(M9)
-
-G5 <- gvisGeoChart(Andrew, "LatLong", colorvar='Speed_kt',
-                   options=list(region="US"))
-plot(G5)
-
-Andrew
-str(Andrew)
-class(Andrew$LatLong)
-
-data("Exports")
-Exports
-data(states)
-str(state.name)
-str(State)
-state.x77
-str(state.x77)
+G6 <- gvisGeoChart(TexasCountyMerger_10,locationvar = "LatLong",colorvar='Population',sizevar = "AreaSQMILES",hovervar = "County",options=list(region="US-TX",displayMode="Markers",resolution="provinces",width=600,height=400))
+plot(G6)
