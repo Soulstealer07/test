@@ -15,7 +15,8 @@ str(Coffee)
 M3 <- gvisMotionChart(Coffee, idvar="Period", timevar="Year")
 plot(M3)
 
-str(Coffee_2)
+#After you launch the Motion Chart change your web browser settings to allow flash player
 
 M4 <- gvisMotionChart(Coffee_2, idvar="Period", timevar="Year")
 plot(M4)
+#The second data set although from the same data source contains all possible variables for all time
