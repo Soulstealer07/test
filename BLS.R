@@ -4,17 +4,11 @@ library(dplyr)
 library(scales)
 
 
-data(Fruits)
-str(Fruits)
-head(Fruits)
 
-
-M1 <- gvisMotionChart(Fruits, idvar="Fruit", timevar="Year")
-plot(M1)
-
-M2 <- gvisMotionChart(Fruits, idvar="Fruit", timevar="Date",date.format = "\%Y\%m\%d") 
-plot(M2)
-
+#Go to https://beta.bls.gov/dataQuery/find?fq=survey:[ap]&s=popularity:D       
+#And then select Coffee, 100% ground roast, fifth from the top
+#import the data into r in your working directory
+#Read it into R
 Coffee <- read.csv(file='~/Test/Coffee.csv')
 str(Coffee)
 
