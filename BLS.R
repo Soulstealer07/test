@@ -9,14 +9,13 @@ library(scales)
 #And then select Coffee, 100% ground roast, fifth from the top
 #import the data into r in your working directory
 #Read it into R
-Coffee <- read.csv(file='~/Test/Coffee.csv')
-str(Coffee)
+#I have included the data set in the Motion Chart Folder 
 
-M3 <- gvisMotionChart(Coffee, idvar="Period", timevar="Year")
-plot(M3)
 
-#After you launch the Motion Chart change your web browser settings to allow flash player
 
 M4 <- gvisMotionChart(Coffee_2, idvar="Period", timevar="Year")
 plot(M4)
-#The second data set although from the same data source contains all possible variables for all time
+
+#After you launch the Motion Chart change your web browser settings to allow flash player
+
+#This data set  contains all possible variables for all time
