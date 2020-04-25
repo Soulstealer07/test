@@ -91,7 +91,7 @@ str(Map_Gas)
 #Write the data frame object to a temporary file in the working directory
 
 Map_csv<-write.csv(Map_Gas,"~/Test/CheapGasoline/Map_csv.csv")
-#Go to R file folder and create a permanent data set from the temporary file
+#Go to R file folder and create a permanent data set from the temporary file lines 33-37
 data(Map)
 str(Map)
 M7<-gvisGeoChart(Map,locationvar = 'State',colorvar = 'MidGrade',options=list(region="US",displayMode="regions",resolution="provinces",width=600,height=400))
