@@ -1,0 +1,45 @@
+---
+title: "Commodities Report"
+author: "Michael Hall"
+date: "4/9/2020"
+output: html_document
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#**An Analysis of Gasoline Prices**
+By Michael Hall
+
+The Bureau of labor Statistics provides access to a vast array of economic data. One in particular is
+Gasoline, unleaded regular, per gallon/3.785 liters in U.S. city average, average price, not seasonally adjusted. We want to determine trends in the data. The resuls are reported below with an interactive visualization to aid in understanding. 
+
+
+#Descriptive Statistics
+```{r Example, results='asis',tidy=FALSE}
+data(GasolinePrice)
+summary(GasolinePrice)
+
+```
+
+
+This is a scatterplot of the data which gives observations on several variables including value, year, Montlhy percentages Changes.
+
+#A plot of the Data from the BLS
+```{r Plot, echo=FALSE}
+
+GasolinePrice<-GasolinePrice[-c(1,3,4,10,11,12)]
+plot(GasolinePrice,col="blue",pch=20)
+```
+
+The highest value in terms of average city price was `r max(GasolinePrice$Value)', which happened in 'r 
+floor(which(GasolinePrice$Value==max(GasolinePrice$Value))/(12))+1980'.
+
+
+###A Boxplot giving range of data
+```{r Boxplot, echo=FALSE}
+boxplot(GasolinePrice$Value~GasolinePrice$Year,data=GasolinePrice,col="green",main="Time Series Gasoline Price",xlab="Year",ylab="Price in U.S. Dollars")
+
+```
