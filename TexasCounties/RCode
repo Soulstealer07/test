@@ -42,4 +42,4 @@ str(County_combine)
 County_csv <- write.csv(County_combine,"C:/Users/micha/OneDrive/Documents/Test/TexasCounties/County.csv")
 
 
-#I have included the clean data set as a file in this folder called TexasCountyMerger_10.csv
+#I have included the clean data set as a file in this folder called TexasCountyMerger_12.csv
