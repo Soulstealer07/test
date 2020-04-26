@@ -1,1 +1,6 @@
-Hello
+
+
+
+TexasCountyMerger_10$LatLong <- paste(TexasCountyMerger_10$y_long,TexasCountyMerger_10$x_lat,sep=":")
+G6 <- gvisGeoChart(TexasCountyMerger_10,locationvar = "LatLong",colorvar='Population',sizevar = "AreaSQMILES",hovervar = "County",options=list(region="US-TX",displayMode="Markers",resolution="provinces",width=600,height=400))
+plot(G6)
